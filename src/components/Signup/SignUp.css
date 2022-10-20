@@ -8,13 +8,22 @@
 .login-form1 h2{
     text-align: center;
 }
-#email1, #password1, #button1, #google1, #confirm{
+#email1, #password1, #button1, #confirm{
     width: 100%;
     margin: 10px auto;
     height: 30px;
     border-radius: 5px;
     border: 1px solid lightgrey;
     padding-left: 10px;
+}
+.google{
+    margin: auto;
+    width: 80%;
+}
+#google1{
+    cursor: pointer;
+    width: 100%;
+    margin: auto;
 }
 #button1{
     background-color: orange;

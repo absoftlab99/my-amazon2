@@ -5,7 +5,7 @@ import google from '../../images/gogole.png';
 import './Login.css'
 
 const Login = () => {
-    const {loginUser} = useContext(AuthContext);
+    const {loginUser, logInWithPopUp} = useContext(AuthContext);
     const navigator = useNavigate();
 
     const logInHandler = (event) =>{
@@ -15,6 +15,18 @@ const Login = () => {
         const password = form.password.value;
 
         loginUser(email, password)
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+            navigator('/');
+        })
+        .catch(error =>{
+            console.error(error);
+        })
+    }
+    const popUpHandler = (event) =>{
+        event.preventDefault();
+        logInWithPopUp()
         .then(result =>{
             const user = result.user;
             console.log(user);
@@ -37,8 +49,10 @@ const Login = () => {
                 <small>New to Emajhon? <Link id='new' to='/signup'>Create New Account</Link></small>
                 </div><br></br>
                 <hr></hr>
-                <button id='google'><img id='img' src={google} alt="google" /></button>
             </form>
+            <div  className='google'>
+                <button onClick={popUpHandler} id='google'><img id='img' src={google} alt="google" /></button>
+            </div>
         </div>
     );
 };

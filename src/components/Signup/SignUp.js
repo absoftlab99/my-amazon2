@@ -1,12 +1,14 @@
 import google from '../../images/gogole.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './SignUp.css';
 import { useContext } from 'react';
 import { AuthContext } from '../../contexts/UserContext';
 
 const SignUp = () => {
     
-    const {createUser} = useContext(AuthContext);
+    const {createUser, logInWithPopUp} = useContext(AuthContext);
+    const navigator = useNavigate();
+
     const signUpHandler = (event) =>{
         event.preventDefault();
         const form = event.target;
@@ -25,6 +27,18 @@ const SignUp = () => {
         })
 
     }
+    const popUpHandler = (event) =>{
+        event.preventDefault();
+        logInWithPopUp()
+        .then(result =>{
+            const user = result.user;
+            console.log(user);
+            navigator('/');
+        })
+        .catch(error =>{
+            console.error(error);
+        })
+    }
     console.log(createUser);
     return (
         <div className='login-form1'>
@@ -41,8 +55,10 @@ const SignUp = () => {
                 <small>Already have an account? <Link id='new1' to='/login'>Please Login</Link></small>
                 </div><br></br>
                 <hr></hr>
-                <button id='google1'><img id='img1' src={google} alt="google" /></button>
             </form>
+            <div className='google'>
+            <button onClick={popUpHandler} id='google1'><img id='img1' src={google} alt="google" /></button>
+            </div>
         </div>
     );
 };

@@ -17,6 +17,16 @@
     border: 1px solid lightgrey;
     padding-left: 10px;
 }
+.google{
+    width: 80%;
+    margin: auto;
+    margin-top: 20px;
+}
+#google{
+    cursor: pointer;
+    width: 100%;
+    margin: auto;
+}
 #button{
     background-color: orange;
     cursor: pointer;
