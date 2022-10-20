@@ -19,6 +19,7 @@
 }
 #button{
     background-color: orange;
+    cursor: pointer;
 }
 #new{
     color: orange;

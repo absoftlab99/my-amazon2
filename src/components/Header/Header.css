@@ -17,3 +17,13 @@
 .header a:hover{
     color: orange;
 }
+#logout{
+    padding: 10px;
+    margin-left: 20px;
+    background-color: orange;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    color: black;
+    display: inline-block;
+}
