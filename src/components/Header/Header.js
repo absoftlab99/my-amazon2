@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 import logo from '../../images/Logo.svg';
+import avater from '../../images/avatar.png';
 import './Header.css';
 
 const Header = () => {
@@ -21,6 +22,12 @@ const Header = () => {
                         <Link to="/signup">Sign Up</Link>
                     </>
                 }
+                <div className="profile">
+                    {
+                        user?.uid ? <img className='profile' src={user?.photoURL} alt="" /> :
+                        ''
+                    }
+                </div>
             </div>
         </nav>
     );
