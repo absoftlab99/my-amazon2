@@ -1,0 +1,38 @@
+.login-form{
+    height: 450px;
+    width: 350px;
+    border: 1px solid rgb(231, 228, 228);
+    border-radius: 10px;
+    margin: 30px auto;
+}
+.login-form h2{
+    padding-top: 10px;
+    text-align: center;
+}
+#email, #password, #button, #google{
+    width: 100%;
+    margin: 10px auto;
+    height: 30px;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
+    padding-left: 10px;
+}
+#button{
+    background-color: orange;
+}
+#new{
+    color: orange;
+}
+#small{
+    text-align: center;
+}
+.form{
+    margin: auto;
+    padding-inline: 40px;
+}
+#img{
+    width: 20px;
+    height: 20px;
+    margin: auto;
+    padding-top: 3px;
+}
