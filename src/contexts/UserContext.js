@@ -10,12 +10,14 @@ const UserContext = ({children}) => {
     const provider = new GoogleAuthProvider();
 
     const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
     
     const createUser = (email, password) =>{
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const loginUser = (email, password) =>{
+        setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
@@ -31,11 +33,12 @@ const UserContext = ({children}) => {
         const unSubscribe = onAuthStateChanged(auth, currentUser =>{
             console.log(currentUser);
             setUser(currentUser);
+            setLoading(false);
         });
         return () => unSubscribe();
     }, [])
 
-    const authInfo = {createUser, loginUser, logOut, user, logInWithPopUp}
+    const authInfo = {createUser, loginUser, logOut, user, logInWithPopUp, loading}
     return (
         <AuthContext.Provider value={authInfo}>
             {children}

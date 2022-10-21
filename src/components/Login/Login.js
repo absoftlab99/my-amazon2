@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../contexts/UserContext';
 import google from '../../images/gogole.png';
 import './Login.css'
@@ -7,6 +7,8 @@ import './Login.css'
 const Login = () => {
     const {loginUser, logInWithPopUp} = useContext(AuthContext);
     const navigator = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/'
 
     const logInHandler = (event) =>{
         event.preventDefault();
@@ -18,7 +20,7 @@ const Login = () => {
         .then(result =>{
             const user = result.user;
             console.log(user);
-            navigator('/');
+            navigator(from, {replace: true});
         })
         .catch(error =>{
             console.error(error);
@@ -30,7 +32,7 @@ const Login = () => {
         .then(result =>{
             const user = result.user;
             console.log(user);
-            navigator('/');
+            navigator(from, {replace: true});
         })
         .catch(error =>{
             console.error(error);
